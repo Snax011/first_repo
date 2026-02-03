@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Game Highlights</title>
+</head>
+<body>
+  <h1>Game Highlights</h1>
+  <div id="highlights-container"></div>
+
+  <script>
+    // Path to your manifest file
+    const manifestUrl = './public/highlights/manifest.json';
+
+    async function loadHighlights() {
+      try {
+        const response = await fetch(manifestUrl);
+        if (!response.ok) throw new Error('Failed to load manifest');
+        const manifest = await response.json();
+
+        const container = document.getElementById('highlights-container');
+
+        manifest.clips.forEach(clip => {
+          // Create video element for each clip
+          const video = document.createElement('video');
+          video.src = `./public/highlights/${clip.filename}`;
+          video.controls = true;
+          video.width = 320;
+          video.height = 180;
+
+          // Optional: Add a label or timestamp
+          const label = document.createElement('p');
+          label.textContent = `Highlight: ${clip.description || clip.timestamp}`;
+
+          // Append to container
+          container.appendChild(label);
+          container.appendChild(video);
+        });
+      } catch (error) {
+        console.error('Error loading highlights:', error);
+      }
+    }
+
+    loadHighlights();
+  </script>
+</body>
+</html>

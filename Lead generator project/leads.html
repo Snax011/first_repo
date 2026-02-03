@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lead Generation Tool</title>
+</head>
+<body>
+  <h1>Lead Generation Tool</h1>
+  <form id="leadForm">
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="tel" id="phone" placeholder="Phone" required />
+    <button type="submit">Add Lead</button>
+  </form>
+
+  <h2>Leads List</h2>
+  <ul id="leadsList"></ul>
+<button id="showEmails">Show All Emails</button>
+<button id="filterByNameA">Filter Names Starting with A</button>
+<button id="countLeads">Count Leads</button>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Sports Highlights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        a.download-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a.download-link:hover {
+            text-decoration: underline;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            background: #fff;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .highlight-info {
+            font-size: 16px;
+            color: #444;
+        }
+        .tags {
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        video {
+            display: block;
+            margin-top: 15px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        p.no-video {
+            margin-top: 15px;
+            font-style: italic;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sports Highlights</h1>
+
+    <a href="{{ url_for('download_video') }}" class="download-link">Download New Video</a>
+
+    <ul>
+        {% if highlights %}
+            {% for clip in highlights %}
+                <li>
+                    <div class="highlight-info">
+                        <strong>{{ clip.title or 'No Title' }}</strong><br />
+                        Start: {{ clip.start_time or 'N/A' }}, 
+                        Duration: {{ clip.duration or 'N/A' }}s<br />
+                        <span class="tags">Tags: {{ clip.tags or 'None' }}</span>
+                    </div>
+
+                    {% if clip.video_file %}
+                        <video controls preload="metadata">
+                            <source src="{{ url_for('static', filename='videos/' + clip.video_file) }}" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    {% else %}
+                        <p class="no-video">No video available</p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No highlights found.</li>
+        {% endif %}
+    </ul>
+</body>
+</html>

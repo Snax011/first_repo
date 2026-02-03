@@ -1,0 +1,59 @@
+/* General Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* The Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 days a week */
+    gap: 10px;
+}
+
+.day-card {
+    border: 1px solid #e1e4e8;
+    min-height: 110px;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fff;
+    transition: transform 0.2s;
+}
+
+.day-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Event Styling */
+.event {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Logic-based colors */
+.doordash { background-color: #ff3008; } /* DoorDash Red */
+.job { background-color: #007bff; } /* Search Blue */
+.interview { background-color: #28a745; } /* Success Green */
