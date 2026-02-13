@@ -1,0 +1,67 @@
+const attendee = {
+  attendeeId: "T001",
+  name: "Alice Smith",
+  event: "JavaScript Conference",
+  ticketType: "VIP",
+  ticketPrice: 150.00
+};
+
+// Function to log the attendee's name
+function logAttendeeName(attendee) {
+  console.log(attendee.name);
+}
+
+// Function to log the ticket price
+function logTicketPrice(attendee) {
+  console.log(attendee.ticketPrice);
+}
+
+// Function to update the ticket type
+function updateTicketType(attendee, newTicketType) {
+  attendee.ticketType = newTicketType;
+}
+
+// Function to update the ticket price
+function updateTicketPrice(attendee, newTicketPrice) {
+  attendee.ticketPrice = newTicketPrice;
+}
+
+// Function to remove the event property
+function removeEventProperty(attendee) {
+  delete attendee.event;
+}
+
+// Function to add checkedIn property with value true
+function addCheckedInProperty(attendee) {
+  attendee.checkedIn = true;
+}
+
+// Assuming the attendee object and functions are defined as before
+
+// Log the attendee's name
+logAttendeeName(attendee); 
+// Output: Alice Smith
+
+// Log the ticket price
+logTicketPrice(attendee); 
+// Output: 150
+
+// Update the ticket type to "General Admission"
+updateTicketType(attendee, "General Admission");
+console.log(attendee.ticketType); 
+// Output: General Admission
+
+// Update the ticket price to 100
+updateTicketPrice(attendee, 100);
+console.log(attendee.ticketPrice); 
+// Output: 100
+
+// Remove the event property
+removeEventProperty(attendee);
+console.log(attendee.event); 
+// Output: undefined
+
+// Add the checkedIn property with value true
+addCheckedInProperty(attendee);
+console.log(attendee.checkedIn); 
+// Output: true
